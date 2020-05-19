@@ -52,7 +52,7 @@ export default function Dashboard() {
         <div className={classes.flex}>
           <div className={classes.topicsWindow}>
             <List component="nav">
-              {["first", "second", "third"].map((topic) => (
+              {[].map((topic) => (
                 <ListItem button>
                   <ListItemText primary={topic} />
                 </ListItem>
