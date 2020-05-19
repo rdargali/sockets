@@ -52,14 +52,18 @@ export default function Dashboard() {
         <div className={classes.flex}>
           <div className={classes.topicsWindow}>
             <List component="nav">
-              {[].map((topic) => (
+              {[1, 2, 3, 4, 5].map((topic) => (
                 <ListItem button>
                   <ListItemText primary={topic} />
                 </ListItem>
               ))}
             </List>
           </div>
-          <div className={classes.chatWindow}></div>
+          <div className={classes.chatWindow}>
+            {[{ from: "user", msg: "hello" }].map((chat) => (
+              <div className={classes.flex}></div>
+            ))}
+          </div>
         </div>
         <div className={classes.flex}>
           <div className={classes.chatBox}></div>
