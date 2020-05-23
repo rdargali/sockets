@@ -10,6 +10,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 //
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
+//
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,15 +31,15 @@ const useStyles = makeStyles((theme) => ({
   chatWindow: {
     width: "70%",
     height: "300px",
+    padding: "15px",
   },
   chatBox: {
-    width: "90%",
+    width: "85%",
     height: "25px",
-    border: "1px solid grey",
   },
   button: {
-    width: "10%",
-    height: "25px",
+    width: "15%",
+    // height: "25px",
   },
 }));
 
@@ -54,28 +57,40 @@ export default function Dashboard() {
         <div className={classes.flex}>
           <div className={classes.topicsWindow}>
             <List component="nav">
-              {[1, 2, 3, 4, 5].map((topic) => (
-                <ListItem button>
+              {[1, 2, 3, 4, 5].map((topic, index) => (
+                <ListItem button key={index}>
                   <ListItemText primary={topic} />
                 </ListItem>
               ))}
             </List>
           </div>
           <div className={classes.chatWindow}>
-            {[{ from: "user", msg: "hello", initials: "RD" }].map((chat) => (
-              <div className={classes.flex}>
-                <Chip
-                  avatar={<Avatar>{chat.initials}</Avatar>}
-                  variant="outlined"
-                  label={chat.msg}
-                />
-              </div>
-            ))}
+            {[{ from: "user", msg: "hello", initials: "RD" }].map(
+              (chat, index) => (
+                <div className={classes.flex} key={index}>
+                  <Chip
+                    avatar={<Avatar>{chat.initials}</Avatar>}
+                    variant="outlined"
+                    label={chat.msg}
+                  />
+                </div>
+              )
+            )}
           </div>
         </div>
         <div className={classes.flex}>
-          <div className={classes.chatBox}></div>
-          <div className={classes.button}></div>
+          <TextField
+            className={classes.chatBox}
+            id="standard-basic"
+            label="send chat"
+          />
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+          >
+            Send
+          </Button>
         </div>
       </Paper>
     </div>
