@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  const [textValue, setTextValue] = useState("");
+
   return (
     <div>
       <Paper className={classes.root} elevation={2}>
@@ -83,6 +86,7 @@ export default function Dashboard() {
             className={classes.chatBox}
             id="standard-basic"
             label="send chat"
+            value={textValue}
           />
           <Button
             className={classes.button}
