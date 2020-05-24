@@ -39,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     width: "15%",
-    // height: "25px",
+  },
+  chip: {
+    border: "none",
   },
 }));
 
@@ -72,6 +74,7 @@ export default function Dashboard() {
               (chat, index) => (
                 <div className={classes.flex} key={index}>
                   <Chip
+                    className={classes.chip}
                     avatar={<Avatar>{chat.initials}</Avatar>}
                     variant="outlined"
                     label={chat.msg}
@@ -87,6 +90,7 @@ export default function Dashboard() {
             id="standard-basic"
             label="send chat"
             value={textValue}
+            onChange={(e) => setTextValue(e.target.value)}
           />
           <Button
             className={classes.button}
