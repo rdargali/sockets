@@ -2,6 +2,49 @@ import React, { useReducer } from "react";
 
 const CTX = React.createContext();
 
+const initState = {
+  Sockets: [
+    {
+      from: "rawand",
+      msg: "what's up",
+      initials: "RD",
+    },
+    {
+      from: "nuj",
+      msg: "not much",
+      initials: "NZ",
+    },
+    {
+      from: "rawand",
+      msg: "cool",
+      initials: "RD",
+    },
+    {
+      from: "nuj",
+      msg: "SOCKETS",
+      initials: "NZ",
+    },
+  ],
+
+  React: [
+    {
+      from: "rawand",
+      msg: "sockets and react?",
+      initials: "RD",
+    },
+    {
+      from: "nuj",
+      msg: "is that possible??",
+      initials: "NZ",
+    },
+    {
+      from: "rawand",
+      msg: "no way man",
+      initials: "RD",
+    },
+  ],
+};
+
 const reducer = (state, action) => {
   // const { from, msg, initials, topic } = action.payload; //destructure payload
   switch (action.type) {
@@ -25,7 +68,7 @@ const reducer = (state, action) => {
 
 const Store = (props) => {
   const reducerHook = useReducer(reducer, initState);
-  return <CTX.Provider value={}>{props.children}</CTX.Provider>;
+  return <CTX.Provider value={reducerHook}>{props.children}</CTX.Provider>;
 };
 
 export default Store;
