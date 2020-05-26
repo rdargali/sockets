@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CTX } from "./Store";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -48,7 +49,13 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
 
+  //store
+
+  const [allChats] = useContext(CTX);
+  const topicsList = Object.keys(allChats);
+
   const [textValue, setTextValue] = useState("");
+  const [currentTopic, setCurrentTopic] = useState(topicsList[0]);
 
   return (
     <div>
@@ -57,13 +64,17 @@ export default function Dashboard() {
           Discussion Board
         </Typography>
         <Typography variant="h6" component="h6">
-          Topic
+          {currentTopic}
         </Typography>
         <div className={classes.flex}>
           <div className={classes.topicsWindow}>
             <List component="nav">
-              {[1, 2, 3, 4, 5].map((topic, index) => (
-                <ListItem button key={index}>
+              {topicsList.map((topic, index) => (
+                <ListItem
+                  button
+                  onClick={(e) => setCurrentTopic(e.target.innerText)}
+                  key={index}
+                >
                   <ListItemText primary={topic} />
                 </ListItem>
               ))}
