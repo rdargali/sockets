@@ -52,10 +52,10 @@ export default function Dashboard() {
   //store
 
   const [allChats] = useContext(CTX);
-  const topicsList = Object.keys(allChats);
+  const topics = Object.keys(allChats);
 
   const [textValue, setTextValue] = useState("");
-  const [currentTopic, setCurrentTopic] = useState(topicsList[0]);
+  const [currentTopic, setCurrentTopic] = useState(topics[0]);
 
   return (
     <div>
@@ -69,7 +69,7 @@ export default function Dashboard() {
         <div className={classes.flex}>
           <div className={classes.topicsWindow}>
             <List component="nav">
-              {topicsList.map((topic, index) => (
+              {topics.map((topic, index) => (
                 <ListItem
                   button
                   onClick={(e) => setCurrentTopic(e.target.innerText)}
