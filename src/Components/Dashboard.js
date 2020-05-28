@@ -81,18 +81,16 @@ export default function Dashboard() {
             </List>
           </div>
           <div className={classes.chatWindow}>
-            {[{ from: "user", msg: "hello", initials: "RD" }].map(
-              (chat, index) => (
-                <div className={classes.flex} key={index}>
-                  <Chip
-                    className={classes.chip}
-                    avatar={<Avatar>{chat.initials}</Avatar>}
-                    variant="outlined"
-                    label={chat.msg}
-                  />
-                </div>
-              )
-            )}
+            {allChats[currentTopic].map((chat, index) => (
+              <div className={classes.flex} key={index}>
+                <Chip
+                  className={classes.chip}
+                  avatar={<Avatar>{chat.initials}</Avatar>}
+                  variant="outlined"
+                  label={chat.msg}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className={classes.flex}>
